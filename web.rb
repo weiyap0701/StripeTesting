@@ -51,7 +51,7 @@ post '/charge' do
   begin
     charge = Stripe::Charge.create(
       :amount => payload[:amount], # this number should be in cents
-      :currency => "jpy",
+      :currency => "cny",
       :customer => customer,
       :source => source,
       :description => "Example Charge",
@@ -101,7 +101,7 @@ post '/create_charge' do
   begin
     charge = Stripe::Charge.create(
       :amount => params[:amount], # this number should be in cents
-      :currency => "jpy",
+      :currency => "cny",
       :source => params[:source],
       :description => "Example Charge",
       :metadata => {
@@ -126,7 +126,7 @@ post '/create_intent' do
     intent = Stripe::PaymentIntent.create(
       :allowed_source_types => ['card'],
       :amount => params[:amount],
-      :currency => params[:currency] || 'jpy',
+      :currency => params[:currency] || 'cny',
       :description => params[:description] || 'Example PaymentIntent charge',
       :return_url => params[:return_url],
       :metadata => {
